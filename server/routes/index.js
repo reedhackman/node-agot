@@ -1,14 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/players", (req, res) => {
-  res.json("players list");
-});
+const players = require("./players");
 
-router.get("/players/:id", (req, res) => {
-  const playerID = req.params.id;
-  res.json(playerID);
-});
+router.get("/players", players.getPlayers);
+
+router.get("/players/:id", players.getPlayerById);
 
 router.get("/decks", (req, res) => {
   res.json("decks list");
